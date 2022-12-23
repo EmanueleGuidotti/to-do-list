@@ -1,8 +1,8 @@
 import { FC } from "react";
 import Grid from "@mui/system/Unstable_Grid";
-import Checkbox from "@mui/material/Checkbox";
 import Close from "@mui/icons-material/Close";
 import { Divider } from "@mui/material";
+import { CheckboxContainer } from "./components/checkbox";
 
 interface RowComponentI {
   id: number;
@@ -25,7 +25,7 @@ const RowComponent: FC<RowComponentI> = ({ spacing, id, title, completed }) => {
         </Grid>
         {/*@ts-ignore*/}
         <Grid item xs={2}>
-          <Checkbox defaultChecked={completed} />
+          <CheckboxContainer id={id} completed={completed} />
         </Grid>
       </Grid>
       <Divider />
