@@ -33,7 +33,7 @@ const TodoListContainer: FC = () => {
     };
     dispatch(
       todosApi.util.updateQueryData("getTodos", undefined, (todos) => {
-        todos.push(newItem);
+        todos.unshift(newItem);
       })
     );
   };
