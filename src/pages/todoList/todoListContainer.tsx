@@ -4,15 +4,10 @@ import { TodoListComponent } from "./todoListComponent";
 import { AddTodoContainer } from "../../common/addTodo";
 import { todosApi, useGetTodosQuery } from "../../services/todo.service";
 import { useAppDispatch } from "../../hooks";
+import styles from "./todoList.module.scss";
+import { TodoItemI } from "../../utils/interfaces/todo.interfaces";
 
 const TodoListContainer: FC = () => {
-  interface todoItem {
-    userId: number;
-    id: number;
-    title: string;
-    completed: boolean;
-  }
-
   const {
     data: todosListData,
     error: todosListError,
@@ -23,7 +18,9 @@ const TodoListContainer: FC = () => {
 
   const addToList = (text: string) => {
     const list = [...todosListData];
-    const sortedListById = list.sort((a: todoItem, b: todoItem) => a.id - b.id);
+    const sortedListById = list.sort(
+      (a: TodoItemI, b: TodoItemI) => a.id - b.id
+    );
     let lastItemId = sortedListById[sortedListById.length - 1].id;
     let newItem = {
       id: (lastItemId += 1),
@@ -35,7 +32,7 @@ const TodoListContainer: FC = () => {
       todosApi.util.updateQueryData(
         "getTodos",
         undefined,
-        (todos: todoItem[]) => {
+        (todos: TodoItemI[]) => {
           todos.unshift(newItem);
         }
       )
@@ -45,7 +42,7 @@ const TodoListContainer: FC = () => {
   if (todosListLoading) {
     return (
       <Container maxWidth="sm">
-        <Box sx={{ bgcolor: "#cfe8fc", height: "100vh" }}>
+        <Box>
           <p>...Loading</p>
         </Box>
       </Container>
@@ -54,8 +51,9 @@ const TodoListContainer: FC = () => {
 
   return (
     <Container maxWidth="sm">
+      <h1>Todo List</h1>
       <AddTodoContainer onAddToList={addToList} />
-      <Box sx={{ bgcolor: "#cfe8fc", height: "100vh" }}>
+      <Box className={styles.todoList__listContainer}>
         <TodoListComponent list={todosListData} />
       </Box>
     </Container>

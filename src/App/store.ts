@@ -1,12 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import AppReducer from "../slices/appSlice";
 import { todosApi } from "../services/todo.service";
 
 export const store = configureStore({
   reducer: {
     [todosApi.reducerPath]: todosApi.reducer,
-    app: AppReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

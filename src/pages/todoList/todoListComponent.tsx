@@ -1,15 +1,9 @@
 import { FC, useMemo } from "react";
 import { RowContainer } from "../../common/row";
-
-interface listItemI {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
+import { TodoItemI } from "../../utils/interfaces/todo.interfaces";
 
 interface TodoListComponentI {
-  list: listItemI[];
+  list: TodoItemI[];
 }
 const TodoListComponent: FC<TodoListComponentI> = ({ list }) => {
   const sortedList = useMemo(() => {
@@ -21,7 +15,7 @@ const TodoListComponent: FC<TodoListComponentI> = ({ list }) => {
 
   return (
     <>
-      {sortedList.map(({ id, title, completed }: listItemI) => {
+      {sortedList.map(({ id, title, completed }: TodoItemI) => {
         return (
           <RowContainer key={id} id={id} title={title} completed={completed} />
         );
