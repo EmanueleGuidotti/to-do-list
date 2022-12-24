@@ -32,9 +32,13 @@ const TodoListContainer: FC = () => {
       userId: Math.floor(Math.random() * 10) + 1,
     };
     dispatch(
-      todosApi.util.updateQueryData("getTodos", undefined, (todos) => {
-        todos.unshift(newItem);
-      })
+      todosApi.util.updateQueryData(
+        "getTodos",
+        undefined,
+        (todos: todoItem[]) => {
+          todos.unshift(newItem);
+        }
+      )
     );
   };
 

@@ -3,6 +3,7 @@ import Grid from "@mui/system/Unstable_Grid";
 import Close from "@mui/icons-material/Close";
 import { Divider } from "@mui/material";
 import { CheckboxContainer } from "./components/checkbox";
+import { RemoveItemContainer } from "./components/removeItem";
 
 interface RowComponentI {
   id: number;
@@ -17,7 +18,7 @@ const RowComponent: FC<RowComponentI> = ({ spacing, id, title, completed }) => {
       <Grid container spacing={spacing}>
         {/*@ts-ignore*/}
         <Grid item xs={2}>
-          <Close color="primary" />
+          <RemoveItemContainer id={id} />
         </Grid>
         {/*@ts-ignore*/}
         <Grid item xs={8}>
