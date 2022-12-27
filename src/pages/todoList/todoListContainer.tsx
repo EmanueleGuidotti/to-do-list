@@ -42,8 +42,20 @@ const TodoListContainer: FC = () => {
   if (todosListLoading) {
     return (
       <Container maxWidth="sm">
-        <Box>
+        <h1>Todo List</h1>
+        <Box className={styles.todoList__listContainer}>
           <p>...Loading</p>
+        </Box>
+      </Container>
+    );
+  }
+
+  if (todosListError) {
+    return (
+      <Container maxWidth="sm">
+        <h1>Todo List</h1>
+        <Box className={styles.todoList__listContainer}>
+          <p>Error fetching data please retry</p>
         </Box>
       </Container>
     );
