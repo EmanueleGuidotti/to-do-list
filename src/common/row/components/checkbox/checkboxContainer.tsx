@@ -8,6 +8,9 @@ interface CheckboxContainerI {
   completed: boolean;
   id: number;
 }
+interface CheckboxDisplayProps extends React.HTMLAttributes<HTMLDivElement> {
+  "data-testid"?: string;
+}
 const CheckboxContainer: FC<CheckboxContainerI> = ({ completed, id }) => {
   const dispatch = useAppDispatch();
 
@@ -31,7 +34,13 @@ const CheckboxContainer: FC<CheckboxContainerI> = ({ completed, id }) => {
     );
   };
 
-  return <Checkbox checked={completed} onChange={checkCompleted} />;
+  return (
+    <Checkbox
+      inputProps={{ "data-testid": "checkbox-test" } as CheckboxDisplayProps}
+      checked={completed}
+      onChange={checkCompleted}
+    />
+  );
 };
 
 export { CheckboxContainer };

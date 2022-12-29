@@ -10,16 +10,18 @@ const AddTodoContainer: FC<AddTodoContainerI> = ({ onAddToList }) => {
   const [text, setText] = useState("");
 
   return (
-    <Box className={styles.addTodo}>
+    <Box className={styles.addTodo} data-testid="add-todo-container-test">
       <TextField
         label="Write your note"
         variant="outlined"
+        inputProps={{ "data-testid": "input-test" }}
         onChange={({ target }) => setText(target.value)}
       />
       <Button
         className={styles.addTodo__button}
         variant="outlined"
         size="large"
+        data-testid="button-test"
         onClick={() => onAddToList(text)}
       >
         Add to list

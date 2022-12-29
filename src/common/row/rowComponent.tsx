@@ -15,7 +15,7 @@ interface RowComponentI {
 
 const RowComponent: FC<RowComponentI> = ({ spacing, id, title, completed }) => {
   return (
-    <Box className={styles.row}>
+    <Box className={styles.row} data-testid="row-container-test">
       <Grid container spacing={spacing} className={styles.row__container}>
         {/*@ts-ignore*/}
         <Grid item xs={2}>

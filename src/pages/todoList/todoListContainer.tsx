@@ -41,7 +41,7 @@ const TodoListContainer: FC = () => {
 
   if (todosListLoading) {
     return (
-      <Container maxWidth="sm">
+      <Container maxWidth="sm" data-testid="todo-list-container-test-loading">
         <h1>Todo List</h1>
         <Box className={styles.todoList__listContainer}>
           <p>...Loading</p>
@@ -52,7 +52,7 @@ const TodoListContainer: FC = () => {
 
   if (todosListError) {
     return (
-      <Container maxWidth="sm">
+      <Container maxWidth="sm" data-testid="todo-list-container-test-error">
         <h1>Todo List</h1>
         <Box className={styles.todoList__listContainer}>
           <p>Error fetching data please retry</p>
@@ -62,7 +62,7 @@ const TodoListContainer: FC = () => {
   }
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" data-testid="todo-list-container-test">
       <h1>Todo List</h1>
       <AddTodoContainer onAddToList={addToList} />
       <Box className={styles.todoList__listContainer}>

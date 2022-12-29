@@ -23,7 +23,12 @@ const RemoveItemContainer: FC<RemoveItemContainerI> = ({ id }) => {
   };
 
   return (
-    <Close className={styles.close} color="primary" onClick={removeCompleted} />
+    <Close
+      data-testid="remove-item-test"
+      className={styles.close}
+      color="primary"
+      onClick={removeCompleted}
+    />
   );
 };
 
