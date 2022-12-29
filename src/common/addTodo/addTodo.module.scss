@@ -1,0 +1,8 @@
+.addTodo {
+  display: flex;
+  flex-direction: column;
+
+  .addTodo__button {
+    margin: 1em 0;
+  }
+}
